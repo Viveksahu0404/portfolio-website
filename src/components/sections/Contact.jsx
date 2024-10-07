@@ -143,10 +143,22 @@ const Contact = () => {
     <ContactForm>
       <form ref={form} onSubmit={sendEmail}>
       <ContactTitle> Email Me 🚀</ContactTitle>
-        <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
+        <ContactInput placeholder="Your Email" name="from_email"  type="email"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              title="Please enter a valid email address" />
+          <ContactInput placeholder="Your Name" name="from_name"  required
+              minLength={3}
+              maxLength={10}
+              title="Name should be between 3 to 10 characters" />
+          <ContactInput placeholder="Subject" name="subject"  type="text"
+              required
+              maxLength={100}
+              title="Subject should not exceed 100 characters" />
+          <ContactInputMessage placeholder="Message" name="message" rows={4}  required
+              minLength={10}
+              maxLength={500}
+              title="Message should be between 10 to 500 characters" />
           <ContactButton type="submit" value="Send" />
       </form>
     </ContactForm>
